@@ -1,0 +1,19 @@
+{
+  "name": "dylan_ellis_wpr381_assignment1",
+  "version": "1.0.0",
+  "description": "Node.js app that uses user input to retrieve some information from the internet using API calls.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dylan-Ellis-1/Dylan_Ellis_WPR381_Assignment1.git"
+  },
+  "author": "Dylan Ellis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dylan-Ellis-1/Dylan_Ellis_WPR381_Assignment1/issues"
+  },
+  "homepage": "https://github.com/Dylan-Ellis-1/Dylan_Ellis_WPR381_Assignment1#readme"
+}
