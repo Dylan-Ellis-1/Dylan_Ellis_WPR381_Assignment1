@@ -1,4 +1,7 @@
 const readline = require("readline-sync");
+const SpotifySearch = require( 'spotify-metadata-search' );
+
+let search = SpotifySearch();
 
 let choice;
 
@@ -21,7 +24,13 @@ while (choice !== '4') {
 
         case '2':
             song = readline.question("Enter the song name: \n");
-            console.log('Song name: ' + song);
+            search.track( song, 2, function ( err, data ) {
+                if ( err ) {
+                    console.log(err);
+                }
+                
+                data;
+            } );
         break;
 
         case '3':
