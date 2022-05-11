@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Dylan-Ellis-1/Dylan_Ellis_WPR381_Assignment1/issues"
   },
-  "homepage": "https://github.com/Dylan-Ellis-1/Dylan_Ellis_WPR381_Assignment1#readme"
+  "homepage": "https://github.com/Dylan-Ellis-1/Dylan_Ellis_WPR381_Assignment1#readme",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
 }
