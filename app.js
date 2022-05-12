@@ -29,7 +29,6 @@ while (choice !== '4') {
         break;
 
         case '2':
-            
             try {
                 song = readline.question("Enter the song name: \n");
                 data = api.getSongInfo(song);
@@ -44,16 +43,23 @@ while (choice !== '4') {
             }
         break;
 
-        case '3':
-            movie = readline.question("Enter the movie name: \n");
-            console.log('Movie name: ' + movie);
+        case '3':          
+            try {
+                movie = readline.question("Enter the movie name: \n");
+                data = api.getMovieInfo(movie);
+
+                let movieInfo = JSON.parse(data);
+                console.log('Movie details: \n' + movieInfo);
+            } catch (error) {
+                console.log('An unexpected error occurred see below: \n' + error.message);
+            }
         break;
 
         case '4':
-            console.log('Bye bye\n');
+            console.log('Goodbye come back soon.\n');
         break;
 
         default:
-            console.log('Invalid option entered\n');
+            console.log('Invalid option entered, please enter a valid option in the menu (1-4)\n');
       }
 }

@@ -1,13 +1,18 @@
-const Twit = require('twit');
+const TwitWebApi = require('twit');
 const SpotifyWebApi = require('spotify-web-api-node');
+const OMdbWebApi = new (require('omdbapi'))('dfea9817');
 
-const T = new Twit({
+const T = new TwitWebApi({
     consumer_key: 'kbB99piXAAou57ht6Gv9XsGRc',
   consumer_secret: 'tH6OiDkI9t9BI0s5LN22w5ecPURyVdWT2RKSLK4S542PYHamCV-LE6uR6P3UKOwUecs-4WA',
   access_token: '1524380101433044992-Yr4SEg12D8b8zFaLfjOncP8SJuAgur',
   access_token_secret: 'pJQvj3P9JdAbZvYOljksLbumERaeWsbysJWQw70MBjI9n'
 });
+
 const spotifyApi = new SpotifyWebApi();
+
+const omdb = new OMdbWebAPI();
+
 
 module.exports = {
     getTweets: function(userName){      
@@ -26,15 +31,22 @@ module.exports = {
     },
 
     getSongInfo: function(songName){
-        spotifyApi.searchArtists(songName)
-            .then(function(data) {
+        spotifyApi.searchTracks(songName)
+            .then(data => {
                 return data.body;
-            }, function(error) {
-                console.log(error);
+            }, 
+            function(error) {
+                console.log('An error occurred while trying to search for the song: ' + error);
         });
     },
 
-    cPerim: function(radius){
-        return (2*pi*radius).toFixed(2)
+    getMovieInfo: function(movieName){
+        OMdbWebApi.get({title: movieName})
+            .then(data => {
+                return data.body;
+            }, 
+            function(error) {
+                console.log('An error occurred while trying to search for the movie: ' + error);
+        });
     }
 }

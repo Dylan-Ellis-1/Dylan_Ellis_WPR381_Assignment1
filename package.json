@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Dylan-Ellis-1/Dylan_Ellis_WPR381_Assignment1#readme",
   "dependencies": {
+    "omdbapi": "^3.0.0",
     "readline-sync": "^1.4.10",
     "spotify-web-api-node": "^5.0.2",
     "twit": "^2.2.11"
