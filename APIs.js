@@ -11,9 +11,6 @@ const T = new TwitWebApi({
 
 const spotifyApi = new SpotifyWebApi();
 
-const omdb = new OMdbWebAPI();
-
-
 module.exports = {
     getTweets: function(userName){      
         Name = userName;
