@@ -1,9 +1,6 @@
 const readline = require("readline-sync");
 
-const api = require('./APIs')
-const SpotifySearch = require( 'spotify-metadata-search' );
-
-let search = SpotifySearch();
+const api = require('./APIs');
 
 let choice;
 
@@ -32,18 +29,23 @@ while (choice !== '4') {
         break;
 
         case '2':
-            song = readline.question("Enter the song name: \n");
-            search.track( song, 2, function ( err, data ) {
-                if ( err ) {
-                    console.log(err);
-                }
-                
-                data;
-            } );
+            
+            try {
+                song = readline.question("Enter the song name: \n");
+                data = api.getSongInfo(song);
+
+                let songInfo = JSON.parse(data);
+                console.log('Artist: ' + songInfo.artist);
+                console.log('Song: ' + songInfo.name);
+                console.log('Preview: ' + songInfo.preview_url);
+                console.log('Album: ' + songInfo.album);
+            } catch (error) {
+                console.log('An unexpected error occurred see below: \n' + error.message);
+            }
         break;
 
         case '3':
-            movie = readLineSync.question("Enter the movie name: \n");
+            movie = readline.question("Enter the movie name: \n");
             console.log('Movie name: ' + movie);
         break;
 
