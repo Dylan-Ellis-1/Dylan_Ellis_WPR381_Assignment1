@@ -1,4 +1,6 @@
 const readline = require("readline-sync");
+
+const api = require('./APIs')
 const SpotifySearch = require( 'spotify-metadata-search' );
 
 let search = SpotifySearch();
@@ -18,8 +20,15 @@ while (choice !== '4') {
 
     switch(choice) {
         case '1':
-            username = readline.question("Enter the username: \n");
-            console.log('Username: ' + username);
+            try {
+                userName = readline.question("Enter the username: \n");
+                data = api.getTweets(userName);
+
+                let tweetData = JSON.parse(data);
+                console.log('Tweets: ' + tweetData.tweets);
+            } catch (error) {
+                console.log('An unexpected error occurred see below: \n' + error.message);
+            }
         break;
 
         case '2':
