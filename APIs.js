@@ -1,6 +1,7 @@
 const TwitWebApi = require('twit');
 const SpotifyWebApi = require('spotify-web-api-node');
 const OMdbWebApi = new (require('omdbapi'))('dfea9817');
+const fs = require('fs');
 
 const T = new TwitWebApi({
     consumer_key: 'kbB99piXAAou57ht6Gv9XsGRc',
@@ -21,7 +22,8 @@ module.exports = {
         function searchedData(error, data) {
             if (error) {
                 console.log('An error occurred while trying to search for tweets: ' + error);
-            } else {
+            } 
+            else {
                 return data.body;
             }
         }
@@ -45,5 +47,29 @@ module.exports = {
             function(error) {
                 console.log('An error occurred while trying to search for the movie: ' + error);
         });
+    },
+
+    fileInfo: function(){
+        let arrData = []; 
+
+        try { 
+            let data = fs.readFileSync('random.text');
+            let strData = data.toString();
+
+            arrData = strData.split(','); 
+            
+            if (arrData[0] === 'Song name'){
+                return getSongInfo(arrData[1]);
+            }
+            else if(arrData[0] === 'Movie name'){
+                return getMovieInfo(arrData[1]);
+            }
+            else{
+                return 'Invalid query';
+            }
+
+        } catch(error) {
+            console.log('Error:', error.message);
+        }          
     }
 }

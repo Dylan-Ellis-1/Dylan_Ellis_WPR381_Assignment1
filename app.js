@@ -4,13 +4,14 @@ const api = require('./APIs');
 
 let choice;
 
-while (choice !== '4') {
+while (choice !== '5') {
     console.log();
     console.log('----------------------------------------------------------------');
-    console.log("(1) Print latest tweets");
-    console.log("(2) Perform a Spotify look-up for a song");
-    console.log("(3) Query OMDb for movie details");
-    console.log("(4) Exit");
+    console.log('(1) Print latest tweets');
+    console.log('(2) Perform a Spotify look-up for a song');
+    console.log('(3) Query OMDb for movie details');
+    console.log('(4) Read a query from a text file')
+    console.log('(5) Exit');
     console.log('----------------------------------------------------------------\n');
 
     choice = readline.question("Pick an option: \n");
@@ -56,6 +57,14 @@ while (choice !== '4') {
         break;
 
         case '4':
+            try {
+                console.log(api.fileInfo());
+            } catch (error) {
+                console.log('An unexpected error occurred see below: \n' + error.message);
+            }
+        break;
+
+        case '5':
             console.log('Goodbye come back soon.\n');
         break;
 
